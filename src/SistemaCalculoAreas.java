@@ -203,7 +203,7 @@ public class SistemaCalculoAreas {
                         Figura.Decorador.imprimirCabecera("¡GRACIAS POR USAR EL SISTEMA!");
                         break;
                     default:
-                        System.out.println("❌ Opción no válida. Intente nuevamente.");
+                        System.out.println(" Opción no válida. Intente nuevamente.");
                 }
 
                 if (continuar && opcion >= 1 && opcion <= 3) {
@@ -211,7 +211,7 @@ public class SistemaCalculoAreas {
                 }
 
             } catch (Exception e) {
-                System.out.println("❌ Error: " + e.getMessage());
+                System.out.println(" Error: " + e.getMessage());
                 scanner.nextLine(); // Limpiar buffer
             }
         }
@@ -223,12 +223,12 @@ public class SistemaCalculoAreas {
         Figura.Decorador.imprimirLinea();
         System.out.println("           MENÚ PRINCIPAL");
         Figura.Decorador.imprimirLinea();
-        System.out.println("1. 🔵 Calcular área de círculo");
-        System.out.println("2. ⬜ Calcular área de rectángulo");
-        System.out.println("3. 🔺 Calcular área de triángulo");
-        System.out.println("4. 📋 Ver historial de cálculos");
-        System.out.println("5. 📊 Ver estadísticas");
-        System.out.println("6. 🚪 Salir");
+        System.out.println("1.  Calcular área de círculo");
+        System.out.println("2.  Calcular área de rectángulo");
+        System.out.println("3.  Calcular área de triángulo");
+        System.out.println("4.  Ver historial de cálculos");
+        System.out.println("5.  Ver estadísticas");
+        System.out.println("6.  Salir");
         Figura.Decorador.imprimirLinea();
         System.out.print("Seleccione una opción (1-6): ");
     }
@@ -242,7 +242,7 @@ public class SistemaCalculoAreas {
     }
 
     private static void calcularAreaCirculo() {
-        System.out.println("\n🔵 CÁLCULO DE ÁREA - CÍRCULO");
+        System.out.println("\n CÁLCULO DE ÁREA - CÍRCULO");
         Figura.Decorador.imprimirLinea();
 
         try {
@@ -252,16 +252,16 @@ public class SistemaCalculoAreas {
             Circulo circulo = new Circulo(radio);
             historial.add(circulo);
 
-            System.out.println("\n✅ Resultado:");
+            System.out.println("\n Resultado:");
             System.out.println("   " + circulo.toString());
 
         } catch (IllegalArgumentException e) {
-            System.out.println("❌ Error: " + e.getMessage());
+            System.out.println(" Error: " + e.getMessage());
         }
     }
 
     private static void calcularAreaRectangulo() {
-        System.out.println("\n⬜ CÁLCULO DE ÁREA - RECTÁNGULO");
+        System.out.println("\n CÁLCULO DE ÁREA - RECTÁNGULO");
         Figura.Decorador.imprimirLinea();
 
         try {
@@ -274,16 +274,16 @@ public class SistemaCalculoAreas {
             Rectangulo rectangulo = new Rectangulo(base, altura);
             historial.add(rectangulo);
 
-            System.out.println("\n✅ Resultado:");
+            System.out.println("\n Resultado:");
             System.out.println("   " + rectangulo.toString());
 
             // Mostrar si es un cuadrado
             if (Math.abs(base - altura) < 0.001) {
-                System.out.println("   ℹ️  Nota: Es un cuadrado perfecto!");
+                System.out.println("     Nota: Es un cuadrado perfecto!");
             }
 
         } catch (IllegalArgumentException e) {
-            System.out.println("❌ Error: " + e.getMessage());
+            System.out.println(" Error: " + e.getMessage());
         }
     }
 
@@ -308,7 +308,7 @@ public class SistemaCalculoAreas {
                 Triangulo triangulo = new Triangulo(base, altura);
                 historial.add(triangulo);
 
-                System.out.println("\n✅ Resultado:");
+                System.out.println("\n Resultado:");
                 System.out.println("   " + triangulo.toString());
 
             } else if (metodo == 2) {
@@ -329,16 +329,16 @@ public class SistemaCalculoAreas {
                 Triangulo triangulo = new Triangulo(baseTemp, alturaTemp);
                 historial.add(triangulo);
 
-                System.out.println("\n✅ Resultado:");
+                System.out.println("\n Resultado:");
                 System.out.printf("   Triángulo (lados: %.2f, %.2f, %.2f): %.2f unidades²%n",
                         lado1, lado2, lado3, area);
 
             } else {
-                System.out.println("❌ Opción no válida");
+                System.out.println(" Opción no válida");
             }
 
         } catch (IllegalArgumentException e) {
-            System.out.println("❌ Error: " + e.getMessage());
+            System.out.println(" Error: " + e.getMessage());
         }
     }
 
@@ -346,7 +346,7 @@ public class SistemaCalculoAreas {
         Figura.Decorador.imprimirCabecera("HISTORIAL DE CÁLCULOS");
 
         if (historial.isEmpty()) {
-            System.out.println("📝 No hay cálculos registrados aún.");
+            System.out.println(" No hay cálculos registrados aún.");
             return;
         }
 
@@ -363,7 +363,7 @@ public class SistemaCalculoAreas {
         Figura.Decorador.imprimirCabecera("ESTADÍSTICAS DEL SISTEMA");
 
         if (historial.isEmpty()) {
-            System.out.println("📊 No hay datos para mostrar estadísticas.");
+            System.out.println(" No hay datos para mostrar estadísticas.");
             return;
         }
 
@@ -372,7 +372,7 @@ public class SistemaCalculoAreas {
         double areaMaxima = encontrarAreaMaxima();
         double areaMinima = encontrarAreaMinima();
 
-        System.out.println("📈 RESUMEN ESTADÍSTICO:");
+        System.out.println(" RESUMEN ESTADÍSTICO:");
         Figura.Decorador.imprimirLinea();
         System.out.printf("Total de figuras calculadas: %d%n", totalFiguras);
         System.out.printf("Promedio de áreas: %.2f unidades²%n", promedioAreas);
@@ -412,7 +412,7 @@ public class SistemaCalculoAreas {
     }
 
     private static void mostrarDistribucionPorTipo() {
-        System.out.println("📊 DISTRIBUCIÓN POR TIPO:");
+        System.out.println(" DISTRIBUCIÓN POR TIPO:");
 
         Map<String, Integer> contadores = new HashMap<>();
         Map<String, Double> sumaAreas = new HashMap<>();
