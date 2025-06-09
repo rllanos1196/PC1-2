@@ -1,6 +1,9 @@
 import java.util.*;
 import java.util.Scanner;
 
+
+//Cambios para la rama BranchJunior
+
 // Clase abstracta base
 abstract class Figura {
     protected String nombre;
@@ -10,7 +13,7 @@ abstract class Figura {
         this.nombre = nombre;
     }
 
-    // Método abstracto que deben implementar las clases hijas
+    // MÃ©todo abstracto que deben implementar las clases hijas
     public abstract double calcularArea();
 
     public String getNombre() {
@@ -23,10 +26,10 @@ abstract class Figura {
 
     @Override
     public String toString() {
-        return String.format("%s: %.2f unidades²", nombre, area);
+        return String.format("%s: %.2f unidadesÂ²", nombre, area);
     }
 
-    // Clase anidada estática para decoración
+    // Clase anidada estÃ¡tica para decoraciÃ³n
     public static class Decorador {
         public static void imprimirCabecera(String titulo) {
             System.out.println("\n" + "=".repeat(50));
@@ -44,12 +47,12 @@ abstract class Figura {
     }
 }
 
-// Clase para círculo
+// Clase para cÃ­rculo
 class Circulo extends Figura {
     private double radio;
 
     public Circulo(double radio) throws IllegalArgumentException {
-        super("Círculo");
+        super("CÃ­rculo");
         validarParametro(radio, "Radio");
         this.radio = radio;
         this.area = calcularArea();
@@ -60,7 +63,7 @@ class Circulo extends Figura {
         return Math.PI * Math.pow(radio, 2);
     }
 
-    // Sobrecarga: método estático para calcular sin crear objeto
+    // Sobrecarga: mÃ©todo estÃ¡tico para calcular sin crear objeto
     public static double calcularArea(double radio) {
         return Math.PI * Math.pow(radio, 2);
     }
@@ -73,17 +76,17 @@ class Circulo extends Figura {
 
     @Override
     public String toString() {
-        return String.format("Círculo (r=%.2f): %.2f unidades²", radio, area);
+        return String.format("CÃ­rculo (r=%.2f): %.2f unidadesÂ²", radio, area);
     }
 }
 
-// Clase para rectángulo
+// Clase para rectÃ¡ngulo
 class Rectangulo extends Figura {
     private double base;
     private double altura;
 
     public Rectangulo(double base, double altura) throws IllegalArgumentException {
-        super("Rectángulo");
+        super("RectÃ¡ngulo");
         validarParametros(base, altura);
         this.base = base;
         this.altura = altura;
@@ -95,12 +98,12 @@ class Rectangulo extends Figura {
         return base * altura;
     }
 
-    // Sobrecarga: método para cuadrado (un solo parámetro)
+    // Sobrecarga: mÃ©todo para cuadrado (un solo parÃ¡metro)
     public static double calcularArea(double lado) {
         return lado * lado;
     }
 
-    // Sobrecarga: método estático para rectángulo
+    // Sobrecarga: mÃ©todo estÃ¡tico para rectÃ¡ngulo
     public static double calcularArea(double base, double altura) {
         return base * altura;
     }
@@ -113,17 +116,17 @@ class Rectangulo extends Figura {
 
     @Override
     public String toString() {
-        return String.format("Rectángulo (%.2f x %.2f): %.2f unidades²", base, altura, area);
+        return String.format("RectÃ¡ngulo (%.2f x %.2f): %.2f unidadesÂ²", base, altura, area);
     }
 }
 
-// Clase para triángulo
+// Clase para triÃ¡ngulo
 class Triangulo extends Figura {
     private double base;
     private double altura;
 
     public Triangulo(double base, double altura) throws IllegalArgumentException {
-        super("Triángulo");
+        super("TriÃ¡ngulo");
         validarParametros(base, altura);
         this.base = base;
         this.altura = altura;
@@ -135,23 +138,23 @@ class Triangulo extends Figura {
         return (base * altura) / 2.0;
     }
 
-    // Sobrecarga: método estático
+    // Sobrecarga: mÃ©todo estÃ¡tico
     public static double calcularArea(double base, double altura) {
         return (base * altura) / 2.0;
     }
 
-    // Sobrecarga: fórmula de Herón para tres lados
+    // Sobrecarga: fÃ³rmula de HerÃ³n para tres lados
     public static double calcularArea(double lado1, double lado2, double lado3) throws IllegalArgumentException {
         if (lado1 <= 0 || lado2 <= 0 || lado3 <= 0) {
             throw new IllegalArgumentException("Todos los lados deben ser mayores que 0");
         }
 
-        // Verificar que los lados pueden formar un triángulo
+        // Verificar que los lados pueden formar un triÃ¡ngulo
         if (lado1 + lado2 <= lado3 || lado1 + lado3 <= lado2 || lado2 + lado3 <= lado1) {
-            throw new IllegalArgumentException("Los lados no pueden formar un triángulo válido");
+            throw new IllegalArgumentException("Los lados no pueden formar un triÃ¡ngulo vÃ¡lido");
         }
 
-        double s = (lado1 + lado2 + lado3) / 2.0; // Semi-perímetro
+        double s = (lado1 + lado2 + lado3) / 2.0; // Semi-perÃ­metro
         return Math.sqrt(s * (s - lado1) * (s - lado2) * (s - lado3));
     }
 
@@ -163,7 +166,7 @@ class Triangulo extends Figura {
 
     @Override
     public String toString() {
-        return String.format("Triángulo (b=%.2f, h=%.2f): %.2f unidades²", base, altura, area);
+        return String.format("TriÃ¡ngulo (b=%.2f, h=%.2f): %.2f unidadesÂ²", base, altura, area);
     }
 }
 
@@ -173,7 +176,7 @@ public class SistemaCalculoAreas {
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        Figura.Decorador.imprimirCabecera("SISTEMA DE CÁLCULO DE ÁREAS");
+        Figura.Decorador.imprimirCabecera("SISTEMA DE CÃ�LCULO DE Ã�REAS");
 
         boolean continuar = true;
 
@@ -200,10 +203,10 @@ public class SistemaCalculoAreas {
                         break;
                     case 6:
                         continuar = false;
-                        Figura.Decorador.imprimirCabecera("¡GRACIAS POR USAR EL SISTEMA!");
+                        Figura.Decorador.imprimirCabecera("Â¡GRACIAS POR USAR EL SISTEMA!");
                         break;
                     default:
-                        System.out.println(" Opción no válida. Intente nuevamente.");
+                        System.out.println(" OpciÃ³n no vÃ¡lida. Intente nuevamente.");
                 }
 
                 if (continuar && opcion >= 1 && opcion <= 3) {
@@ -221,28 +224,28 @@ public class SistemaCalculoAreas {
 
     private static void mostrarMenu() {
         Figura.Decorador.imprimirLinea();
-        System.out.println("           MENÚ PRINCIPAL");
+        System.out.println("           MENÃš PRINCIPAL");
         Figura.Decorador.imprimirLinea();
-        System.out.println("1.  Calcular área de círculo");
-        System.out.println("2.  Calcular área de rectángulo");
-        System.out.println("3.  Calcular área de triángulo");
-        System.out.println("4.  Ver historial de cálculos");
-        System.out.println("5.  Ver estadísticas");
+        System.out.println("1.  Calcular Ã¡rea de cÃ­rculo");
+        System.out.println("2.  Calcular Ã¡rea de rectÃ¡ngulo");
+        System.out.println("3.  Calcular Ã¡rea de triÃ¡ngulo");
+        System.out.println("4.  Ver historial de cÃ¡lculos");
+        System.out.println("5.  Ver estadÃ­sticas");
         System.out.println("6.  Salir");
         Figura.Decorador.imprimirLinea();
-        System.out.print("Seleccione una opción (1-6): ");
+        System.out.print("Seleccione una opciÃ³n (1-6): ");
     }
 
     private static int leerOpcion() {
         if (!scanner.hasNextInt()) {
-            scanner.nextLine(); // Consumir entrada inválida
-            throw new IllegalArgumentException("Debe ingresar un número válido");
+            scanner.nextLine(); // Consumir entrada invÃ¡lida
+            throw new IllegalArgumentException("Debe ingresar un nÃºmero vÃ¡lido");
         }
         return scanner.nextInt();
     }
 
     private static void calcularAreaCirculo() {
-        System.out.println("\n CÁLCULO DE ÁREA - CÍRCULO");
+        System.out.println("\n CÃ�LCULO DE Ã�REA - CÃ�RCULO");
         Figura.Decorador.imprimirLinea();
 
         try {
@@ -261,7 +264,7 @@ public class SistemaCalculoAreas {
     }
 
     private static void calcularAreaRectangulo() {
-        System.out.println("\n CÁLCULO DE ÁREA - RECTÁNGULO");
+        System.out.println("\n CÃ�LCULO DE Ã�REA - RECTÃ�NGULO");
         Figura.Decorador.imprimirLinea();
 
         try {
@@ -288,12 +291,12 @@ public class SistemaCalculoAreas {
     }
 
     private static void calcularAreaTriangulo() {
-        System.out.println("\n CÁLCULO DE ÁREA - TRIÁNGULO");
+        System.out.println("\n CÃ�LCULO DE Ã�REA - TRIÃ�NGULO");
         Figura.Decorador.imprimirLinea();
-        System.out.println("Seleccione el método de cálculo:");
+        System.out.println("Seleccione el mÃ©todo de cÃ¡lculo:");
         System.out.println("1. Base y altura");
-        System.out.println("2. Tres lados (Fórmula de Herón)");
-        System.out.print("Opción: ");
+        System.out.println("2. Tres lados (FÃ³rmula de HerÃ³n)");
+        System.out.print("OpciÃ³n: ");
 
         try {
             int metodo = leerInt();
@@ -323,18 +326,18 @@ public class SistemaCalculoAreas {
 
                 double area = Triangulo.calcularArea(lado1, lado2, lado3);
 
-                // Crear un triángulo temporal para el historial usando altura calculada
+                // Crear un triÃ¡ngulo temporal para el historial usando altura calculada
                 double baseTemp = lado1;
                 double alturaTemp = (2 * area) / baseTemp;
                 Triangulo triangulo = new Triangulo(baseTemp, alturaTemp);
                 historial.add(triangulo);
 
                 System.out.println("\n Resultado:");
-                System.out.printf("   Triángulo (lados: %.2f, %.2f, %.2f): %.2f unidades²%n",
+                System.out.printf("   TriÃ¡ngulo (lados: %.2f, %.2f, %.2f): %.2f unidadesÂ²%n",
                         lado1, lado2, lado3, area);
 
             } else {
-                System.out.println(" Opción no válida");
+                System.out.println(" OpciÃ³n no vÃ¡lida");
             }
 
         } catch (IllegalArgumentException e) {
@@ -343,10 +346,10 @@ public class SistemaCalculoAreas {
     }
 
     private static void mostrarHistorial() {
-        Figura.Decorador.imprimirCabecera("HISTORIAL DE CÁLCULOS");
+        Figura.Decorador.imprimirCabecera("HISTORIAL DE CÃ�LCULOS");
 
         if (historial.isEmpty()) {
-            System.out.println(" No hay cálculos registrados aún.");
+            System.out.println(" No hay cÃ¡lculos registrados aÃºn.");
             return;
         }
 
@@ -358,12 +361,12 @@ public class SistemaCalculoAreas {
         }
     }
 
-    // Métodos estáticos para estadísticas
+    // MÃ©todos estÃ¡ticos para estadÃ­sticas
     private static void mostrarEstadisticas() {
-        Figura.Decorador.imprimirCabecera("ESTADÍSTICAS DEL SISTEMA");
+        Figura.Decorador.imprimirCabecera("ESTADÃ�STICAS DEL SISTEMA");
 
         if (historial.isEmpty()) {
-            System.out.println(" No hay datos para mostrar estadísticas.");
+            System.out.println(" No hay datos para mostrar estadÃ­sticas.");
             return;
         }
 
@@ -372,12 +375,12 @@ public class SistemaCalculoAreas {
         double areaMaxima = encontrarAreaMaxima();
         double areaMinima = encontrarAreaMinima();
 
-        System.out.println(" RESUMEN ESTADÍSTICO:");
+        System.out.println(" RESUMEN ESTADÃ�STICO:");
         Figura.Decorador.imprimirLinea();
         System.out.printf("Total de figuras calculadas: %d%n", totalFiguras);
-        System.out.printf("Promedio de áreas: %.2f unidades²%n", promedioAreas);
-        System.out.printf("Área máxima: %.2f unidades²%n", areaMaxima);
-        System.out.printf("Área mínima: %.2f unidades²%n", areaMinima);
+        System.out.printf("Promedio de Ã¡reas: %.2f unidadesÂ²%n", promedioAreas);
+        System.out.printf("Ã�rea mÃ¡xima: %.2f unidadesÂ²%n", areaMaxima);
+        System.out.printf("Ã�rea mÃ­nima: %.2f unidadesÂ²%n", areaMinima);
 
         Figura.Decorador.imprimirLinea();
         mostrarDistribucionPorTipo();
@@ -412,7 +415,7 @@ public class SistemaCalculoAreas {
     }
 
     private static void mostrarDistribucionPorTipo() {
-        System.out.println(" DISTRIBUCIÓN POR TIPO:");
+        System.out.println(" DISTRIBUCIÃ“N POR TIPO:");
 
         Map<String, Integer> contadores = new HashMap<>();
         Map<String, Double> sumaAreas = new HashMap<>();
@@ -426,15 +429,15 @@ public class SistemaCalculoAreas {
         for (String tipo : contadores.keySet()) {
             int cantidad = contadores.get(tipo);
             double promedio = sumaAreas.get(tipo) / cantidad;
-            System.out.printf("• %s: %d figuras (promedio: %.2f unidades²)%n",
+            System.out.printf("â€¢ %s: %d figuras (promedio: %.2f unidadesÂ²)%n",
                     tipo, cantidad, promedio);
         }
     }
 
     private static double leerDouble() {
         if (!scanner.hasNextDouble()) {
-            scanner.nextLine(); // Consumir entrada inválida
-            throw new IllegalArgumentException("Debe ingresar un número válido");
+            scanner.nextLine(); // Consumir entrada invÃ¡lida
+            throw new IllegalArgumentException("Debe ingresar un nÃºmero vÃ¡lido");
         }
         double valor = scanner.nextDouble();
         if (valor <= 0) {
@@ -445,15 +448,15 @@ public class SistemaCalculoAreas {
 
     private static int leerInt() {
         if (!scanner.hasNextInt()) {
-            scanner.nextLine(); // Consumir entrada inválida
-            throw new IllegalArgumentException("Debe ingresar un número entero válido");
+            scanner.nextLine(); // Consumir entrada invÃ¡lida
+            throw new IllegalArgumentException("Debe ingresar un nÃºmero entero vÃ¡lido");
         }
         return scanner.nextInt();
     }
 
     private static void preguntarContinuar() {
-        System.out.print("\n¿Desea realizar otro cálculo? (s/n): ");
-        scanner.nextLine(); // Consumir salto de línea pendiente
+        System.out.print("\nÂ¿Desea realizar otro cÃ¡lculo? (s/n): ");
+        scanner.nextLine(); // Consumir salto de lÃ­nea pendiente
         String respuesta = scanner.nextLine().toLowerCase();
 
         if (respuesta.equals("n") || respuesta.equals("no")) {
