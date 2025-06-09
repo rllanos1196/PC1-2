@@ -288,7 +288,7 @@ public class SistemaCalculoAreas {
     }
 
     private static void calcularAreaTriangulo() {
-        System.out.println("\n🔺 CÁLCULO DE ÁREA - TRIÁNGULO");
+        System.out.println("\n CÁLCULO DE ÁREA - TRIÁNGULO");
         Figura.Decorador.imprimirLinea();
         System.out.println("Seleccione el método de cálculo:");
         System.out.println("1. Base y altura");
